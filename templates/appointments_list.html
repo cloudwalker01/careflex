@@ -1,0 +1,108 @@
+{% extends "base_.html" %}
+{% load static %}
+            {% block content %}
+
+             
+
+             
+{% if message %}
+        <section class="js--section-declare" id="hieght">
+          
+{% include 'navbar.html' %}
+                     <div class="row tags ">
+
+                           
+                           <div class="col row box plan-box feedback0">
+                            <h3><strong>Warning:</strong></h3>
+                            <div class="admin">
+<p class="">{{message}}</p>
+<a class="" href="/admin/">Admin</a>
+   </div>
+ </div>
+</div>
+<div class="row">
+</div>
+</section>
+
+<div class="row">
+</div>
+{% else %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <section class="section-doctor js--section-declare">
+        {% include 'navbar.html' %}
+            <div class="row js--wp-4">
+                <h2>Appointments</h2>
+            
+            </div>
+
+
+            <div class="row"></div>
+{% for appointment in appointments %}
+             
+                <div class="col span-1-of-3 box doctor reports js--wp-1-2-0">
+             <!-- feedback{{forloop.counter0}}">-->
+                    <!--<img src="{{media_url}}{{ forloop.counter.image }}" alt="lisbon">-->
+               
+                    <h3 class="">Appointment ID: {{appointment.id}} </h3> 
+                
+                    <div class="city-feature">              <i class="material-icons icon-small">
+assignment_late </i>
+                          
+                       {{appointment.date}}
+                    </div>
+
+    <div class="city-feature">
+                          <i class="material-icons icon-small">schedule</i>
+
+                    {{appointment.time}}
+                    </div>
+                   
+
+
+
+<div class="city-feature">
+                            <i class="material-icons icon-small">assignment</i>
+<strong>Disease:</strong>
+                    {{appointment.disease_option}}
+                  </div>
+                    <div>         
+                    <form action="{% url 'appointment_delete' appointment.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>       
+
+         </div>
+
+                </div>
+
+{% endfor %}
+
+<div class="row">
+</div>
+</section>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

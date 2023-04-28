@@ -1,0 +1,176 @@
+{% extends "base_.html" %}
+{% load static %}
+            {% block content %}
+
+             
+
+          
+{% if message %}
+        <section class="js--section-declare">
+          {% include 'navbar.html' %}
+
+                     <div class="row tags">
+
+                           
+                           <div class="col row box plan-box feedback0">
+                            <h3><strong>Warning:</strong></h3>
+                            <div class="admin">
+<p class="">{{message}}</p>
+<a class="" href="/admin/">Admin</a>
+   </div>
+ </div>
+</div>
+
+</section>
+
+
+{% else %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <section class="section-doctor  js--section-declare">
+         {% include 'navbar.html' %}
+            <div class="row js--wp-4" id="delay2">
+                <h2>Doctor Detail</h2>
+            
+            </div>
+
+
+            <div class="row"></div>
+
+             
+                <div class="reports2 box doctor reports js--wp-1-2-0" id="box5">
+             <!-- feedback{{forloop.counter0}}">-->
+                    <!--<img src="{{media_url}}{{ forloop.counter.image }}" alt="lisbon">-->
+               
+                    <h3 class="">{{doctor.first_name}} {{doctor.last_name}} </h3> 
+                    <div class="city-feature">
+                <strong>Designation:  </strong><span>
+                        {{doctor.designation}}</span>
+                    </div>
+                    <div class="city-feature">
+                         <strong>Address:  </strong><span>
+                       {{doctor.address}}</span>
+                    </div>
+                       <div class="city-feature">
+                            <strong>Email: </strong><span>
+                   {{doctor.email}}</span>
+                     </div>
+                        <div class="city-feature">
+                            <strong>Phone No: </strong><span>
+                   {{doctor.phone}}</span>
+                     </div>
+<div class="city-feature">
+                    <strong> Payment Summary: </strong><br><br>
+                    {{doctor.payment_statement}}
+                      </div>
+                    <div class="city-feature">
+                            <strong>Professional Statement:  </strong><br><br>
+                       {{doctor.professional_statement_text}}
+                    </div>
+                            <div class="city-feature">
+                            <strong>Education Summary: </strong><br><br>
+                        {{doctor.education}}
+                    </div>
+
+
+                <div class="city-feature">
+                            <strong>Curriculum: </strong><br><br>
+                        {% for item in doctor.curriculum.all %}
+      <ul>
+        <li>{{item.major_subject}}</li>
+      </ul>
+      {% endfor %}
+                    </div>
+
+<div class="city-feature">
+
+ <strong>Specializations: </strong><br><br>
+      {% for item in doctor.specialization.all %}
+      <ul>
+        <li>{{item.specialization}}</li>
+      </ul>
+      {% endfor %}
+
+</div>
+
+
+<div class="city-feature">
+  <strong>Service Details:</strong><br><br>
+      {% for item in doctor.price.all %}
+        <tr>
+          <td><strong>Service:</strong> {{item.disease_name}}</td><br>
+          <td><strong>Price:</strong>{{item.price}}</td>
+        </tr>
+        <br><br>
+        {% endfor %}
+
+
+</div>
+
+
+
+
+<div class="city-feature">
+        <strong>Book a Visit</strong><br><br>
+        {% if error_message %}{{ error_message }}{% endif %}
+
+        {{doctor.start_duty_day}} to {{doctor.end_duty_day}} {{doctor.start_time}} am to {{doctor.end_time}} pm
+
+
+</div>
+
+
+
+<div>
+  
+  <form class="" action="{% url 'booking' doctor.id %}" method="post">
+            {% csrf_token %}
+            Date/Time: <br>
+        <input type="date" name="Appointment Date" required = True>
+        <input type="time" name="Appointment Time" required = True>
+      </div>
+      <div class="">
+        Disease:<br>
+          <input type="text" name="issue" >
+          <div class="">
+            <input type="submit" name="Book Now" value="Book Now">
+          </div>
+
+        </form>
+</div>
+
+
+
+
+                    <div>  
+         </div>
+
+                </div>
+
+
+<div class="row">
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+{% endif %}
+{% endblock %}

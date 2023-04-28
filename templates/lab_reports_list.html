@@ -1,0 +1,111 @@
+{% extends "base_.html" %}
+{% load static %}
+            {% block content %}
+
+             
+            
+{% if message %}
+        <section class="js--section-declare" id="hieght">
+          {% include 'navbar.html' %}
+
+                     <div class="row tags">
+
+                           
+                           <div class="col row box plan-box feedback0">
+                            <h3><strong>Warning:</strong></h3>
+                            <div class="admin">
+<p class="">{{message}}</p>
+<a class="" href="/admin/">Admin</a>
+   </div>
+ </div>
+</div>
+
+</section>
+
+
+{% else %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <section class="section-doctor js--section-declare">
+        {% include 'navbar.html' %}
+            <div class="row js--wp-4" id="delay2">
+                <h2>Reports</h2>
+            
+            </div>
+
+
+            <div class="row"></div>
+{% for report in reports %}
+             
+                <div class="col span-1-of-3 box doctor reports js--wp-1-2-0" id="delay">
+             <!-- feedback{{forloop.counter0}}">-->
+                    <!--<img src="{{media_url}}{{ forloop.counter.image }}" alt="lisbon">-->
+               
+                    <h3 class="">Report ID: {{report.id}} </h3> 
+                    <div class="city-feature">
+                        <i class="material-icons icon-small">
+assignment_late </i>
+                        {{report.test_name}}
+                    </div>
+                    <div class="city-feature">
+                          <i class="material-icons icon-small">schedule</i>
+                       {{report.date}}
+                    </div>
+                    <div class="city-feature">
+                            <i class="material-icons icon-small">assignment</i>
+                       {{report.result_summary}}
+                    </div>
+                    <div>         
+                     <a class="btn btn-full1" href="{% url 'report_detail' report.id %}" target="_blank">Read More </a>         
+
+         </div>
+
+                </div>
+
+{% endfor %}
+
+<div class="row">
+</div>
+</section>
+{% endif %}
+{% endblock %}
+<!--
+<div class="row">
+</div>
+            
+
+
+
+    {% for report in reports %}
+
+<div class="">
+  <p class="">{{report.id}}</p>
+<div class="">
+<p>{{report.test_name}}</p>
+<p>{{report.date}}</p>
+<p>{{report.investigations}}</p>
+<p>{{report.result_summary}}</p>
+<a href="{% url 'report_detail' report.id %}">Read More</a>
+</div>
+
+<form action="{% url 'lab_report_delete' report.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+</div>
+{% endfor %}
+
+-->
+

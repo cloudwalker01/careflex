@@ -1,0 +1,145 @@
+{% extends "base_.html" %}
+{% load static %}
+ {% block content %}
+       <header class="header-dept">
+              
+                                      {% include 'navbar.html' %}
+              
+                        <div class="row main-row">
+            <div class="cd-intro col span-2-of-2">
+            <div class="hero-text-box  cd-intro-content mask-2">
+                <div class="content-wrapper">
+                    <div>
+                    
+                
+                    <h1>Our Departments ready to serve  <br></h1>
+                   <p> We are equipped with the most modern facilities and departments to serve you.  <br> </p>
+                   
+                   
+                    <div class="action-wrapper">
+                <a class="btn btn-full js--scroll-to-plans letterbtn" href="#">Learn More </a>
+           
+                 <a class="btn btn-ghost btn2 js--scroll-to-start contactbtn" href="#">Contact</a>  
+                        
+                    </div>
+                    
+                   </div>
+              </div>
+            </div>
+            </div>    
+                       </div> 
+              
+              
+        </header>
+            <section class="section-best">
+            
+            <div class="best box">
+                <h2 class="js--wp-4">What makes us best?</h2>
+                <div class="row">
+                    <div class="col span-1-of-7 box js--wp-a1">
+                      <h3>  <i class="material-icons icon-small">face</i>
+                    Qualified Doctors</h3>
+                        <p>
+                            
+                            We have a team of experienced and qualified doctors. They are all committed to serve you and provide you with best care possible.Call us to know more about our doctors and staff.
+                        </p>
+                    </div>
+                    <div class="col span-1-of-7 box js--wp-a2">
+                      <h3>  <i class="material-icons icon-small">library_books</i>
+                    Online Appointments</h3>
+                    <p>
+                        Appointments are required for pre-travel consultations. We provide online appointments. You may also call our office and in many instances we can schedule your appointment the same day you call.
+                        </p>
+                    </div>
+        
+                
+                </div>
+                
+                    <div class="row">
+                    <div class="col span-1-of-7 box js--wp-a3">
+                       <h3> <i class="material-icons icon-small">card_membership</i>
+                    Free Consultation</h3>
+                    <p>
+                        Busy schedule and don’t have time to wait for a doctor ?
+Traveling somewhere and need urgent medical aid?
+Get the care you need without breaking your bank.
+                        </p>
+                    </div>
+                    <div class="col span-1-of-7 box js--wp-a4">
+                       <h3> <i class="material-icons icon-small">present_to_all</i>
+                    Modern Facilities</h3>
+                        <p>Our medical facility is equipped with the latest technology and talent. We are a complete service medical clinic. We have all the modern facilities for your care. We make sure that you would not be disappointed.
+                        </p>
+                    
+                    </div>
+        
+                
+                </div>
+            
+            
+            </div>
+        
+        
+        
+        
+        
+        
+        </section>
+   {% for service in service %}      
+        <section class="section-dept">
+                   <div class="row js--wp-2-{{forloop.counter}}">
+
+                    <h2> {{service.service_title}}</h2>
+                  </div>
+         <div class="js--wp-6-{{forloop.counter}}">
+          <div class="row cornered box"> 
+           
+                
+           
+                  <div class="row rowb">
+                    <br><br>
+                    <p class="long-copy">{{service.text}}<br><br>
+                    {{service.service_summary}}</p>
+                  </div>
+ 
+                            
+
+          </div>
+
+          <div class="row cornered2">
+            
+                             <div class="row rowa">
+                 <!-- <a href="{% url 'service_detail' service.id %}">Read More</a>-->
+                  
+            </div>
+                
+          </div>
+
+</div>
+
+
+</section>
+
+{% endfor %}
+{% endblock %}
+<!--
+{% for service in service %}
+<div class="">
+<div class="">
+<div class="">
+  <div class="">
+    <img src="" alt="Service Image">
+    <span class="">{{service.service_title}}</span>
+    <p>{{service.service_summary}}</p>
+  </div>
+  <div class="">
+    <p>{{service.text}}</p>
+  </div>
+  <div class="card-action">
+<a href="{% url 'service_detail' service.id %}">Read More</a>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+-->

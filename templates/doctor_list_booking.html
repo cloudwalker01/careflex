@@ -1,0 +1,102 @@
+{% extends "base_.html" %}
+{% load static %}
+{% block content %}
+<header class="header-doc">
+
+  {% include 'navbar.html' %}
+
+  <div class="row main-row">
+    <div class="cd-intro col span-2-of-2">
+      <div class="hero-text-box  cd-intro-content mask-2">
+        <div class="content-wrapper">
+          <div>
+
+
+            <h1>We help you to find the best doctor around you <br></h1>
+            <p>Our doctors are highly trained professionals providing you with the best care possible. <br> </p>
+
+
+            <div class="action-wrapper">
+              <a class="btn btn-full js--scroll-to-plans letterbtn" href="#">Learn More </a>
+
+              <a class="btn btn-ghost btn2 js--scroll-to-start contactbtn" href="#">Contact</a>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+
+</header>
+<section class="section-declare js--section-declare">
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="section-doctor">
+  <div class="row js--wp-4">
+    <h2>Our Amazing Doctors</h2>
+
+  </div>
+
+
+  <div class="row"></div>
+  {% for doctor in doctors %}
+
+  <div class="col span-1-of-3 box doctor plan-box js--wp-1-2-0">
+    <figure class="photo">
+      <img src="{{ doctor.image.url }}" alt="{{ doctor.first_name }} {{doctor.last_name}}">
+    </figure>
+    <h3>{{doctor.first_name}} {{doctor.last_name}}</h3>
+    <div class="city-feature">
+      <i class="ion-ios-person icon-small"></i>
+      {{doctor.designation}}
+    </div>
+    <div class="city-feature">
+      <i class="material-icons icon-small">email</i>
+      <a href="mailto: {{doctor.phone}}">{{doctor.email}}</a>
+    </div>
+    <div class="city-feature">
+      <i class="material-icons icon-small">
+        call </i>
+      {{doctor.phone}}
+    </div>
+    <div>
+      <a class="btn btn-full1" href="{% url 'doctor_info' doctor.id %}" target="_blank">Appointment </a>
+    </div>
+  </div>
+
+  {% endfor %}
+  <div class="row">
+  </div>
+
+
+</section>
+
+
+{% endblock %}
